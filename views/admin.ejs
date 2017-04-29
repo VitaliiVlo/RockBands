@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="public/css/bootstrap.css">
+	<style type="text/css">
+		.container .row input{
+			width: 100%;
+			margin-bottom: 3px;
+		}
+		.container .row button{
+			margin-bottom: 3px;
+		}
+		textarea {
+			width: 100%;
+			resize: none;
+			height: 400px;
+		}
+		body {
+			background-color: green;
+		}
+		.container .row {
+			text-align: center;
+		}
+
+	</style>
+	<script type="text/javascript" src="public/js/jquery-3.2.0.min.js"></script>
+	<script type="text/javascript" src="public/js/bootstrap.js"></script>
+	<script type="text/javascript" src="public/js/admin.js"></script>
+</head>
+<body>
+
+	<!-- Navigation bar -->
+
+	<div class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/main">RockBands</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li> <a href="/feedback">Обратная связь</a> </li>
+					<li> <a href="/playlist">Любимые</a> </li>
+					<li><a href="/logout">Выход</a> </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-5 col-lg-5 col-sm-5" id="songcreate">
+			<p id="p"></p>
+			<button onclick="go()">Add Song</button><br>
+			<input type="text" id="band" placeholder="Band"><br>
+			<input type="text" name="song" onfocus="newinput(event)" placeholder="song"><br>
+		</div>
+		<div class="col-md-2 col-lg-2 col-sm-2">
+			<button onclick="findwords()">Find lyrics</button>
+			<button onclick="findbands()">Find info about bands</button>
+			<button onclick="clearlog()">Clear log</button>
+			<p id="findp"></p>
+		</div>
+
+		<div class="col-md-5 col-lg-5 col-sm-5">
+		
+			<p id="bandp"></p>
+			<button onclick="addband()">Add band</button><br>
+			<input type="text" id="addbandname" placeholder="bandname"><br>
+
+		</div>
+	</div>
+</div>
+
+
+
+</body>
+</html>

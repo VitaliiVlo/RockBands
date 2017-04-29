@@ -1,0 +1,23 @@
+.list-group li:hover {
+	background-color: #95F985;
+	color: black;
+	cursor: pointer;
+	margin-left: 2px;
+}
+
+audio {
+	width: 0;
+	margin-top: 15px;
+}
+
+.jumbotron {
+	background-color: #dff0d8;
+}
+
+body{
+background-image:url(/public/images/concert1.jpg);
+background-repeat:repeat-y;
+background-attachment:fixed;
+background-position: top center;
+background-size: 100%;
+}

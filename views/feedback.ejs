@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Feedback</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="public/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="public/css/feed.css">
+	<script type="text/javascript" src="public/js/jquery-3.2.0.min.js"></script>
+	<script type="text/javascript" src="public/js/bootstrap.js"></script>
+	<script type="text/javascript" src="public/js/feed.js"></script>
+</head>
+<body>
+
+	<!-- Navigation bar -->
+
+	<div class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/main">RockBands</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"> <a href="#" id="menuloved">Обратная связь</a> </li>
+					<li> <a href="/playlist">Любимые</a> </li>
+					<li><a href="/logout">Выход</a> </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- FORM -->
+
+<div id="wrapper">
+	<input type="text" name="" id="name" placeholder="Имя"><br>
+	<input type="text" name="" id="email" placeholder="Email"><br>
+	<input type="text" name="" id="subject" placeholder="Тема сообщения"><br>
+	<textarea id="message" placeholder="Введите ссобщение"></textarea><br>
+	<div id="show"></div>
+	<button id="send">Отправить</button>
+</div>
+
+
+
+</body>
+</html>
