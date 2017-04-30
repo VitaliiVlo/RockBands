@@ -6,21 +6,17 @@ var options = {
   port: 3306,
   user: 'root',
   password: 'root',
+  connectionLimit: 20,
   database: 'rockdb'
 }
 
 var session_options = {
-  host: 'localhost', // Host name for database connection. 
-  port: 3306, // Port number for database connection. 
-  user: 'root', // Database user. 
-  password: 'root', // Password for the above database user. 
-  database: 'rockdb', // Database name. 
   checkExpirationInterval: 7200000, // How frequently expired sessions will be cleared; milliseconds. 
   expiration: 86400000, // The maximum age of a valid session; milliseconds. 
   createDatabaseTable: true, // Whether or not to create the sessions database table, if one does not already exist. 
 };
 
-var connection = mysql.createConnection(options);
+var connection = mysql.createPool(options);
 // connection.connect(function(err) {})
 var sessionStore = new MySQLStore(session_options, connection, function(err) {
   if (err) {
