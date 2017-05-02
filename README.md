@@ -1,7 +1,7 @@
 # RockBands
 
-Technologies:\n
-Frontend: Bootstrap, HTML, CSS, JavaScript (JQuery, AJAX)\n
-Backend: Node.js (Express) \n
-Database: MySQL\n
-Other: Python\n
+Technologies:
+- Frontend: Bootstrap, HTML, CSS, JavaScript (JQuery, AJAX) 1
+- Backend: Node.js (Express)
+- Database: MySQL
+- Other: Python
