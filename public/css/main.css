@@ -2,7 +2,19 @@
 	background-color: #95F985;
 	color: black;
 	cursor: pointer;
-	margin-left: 2px;
+
+	-moz-transform: scale(1.03,1.03);
+	-ms-transform: scale(1.03,1.03);
+	-webkit-transform: scale(1.03,1.03);
+	-o-transform: scale(1.03,1.03);
+	transform: scale(1.03,1.03);
+}
+
+.list-group li {
+	-webkit-transition: .3s all;
+	-moz-transition: .3s all;
+	-o-transition: .3s all;
+	transition: .3s all;
 }
 
 audio {
@@ -15,9 +27,9 @@ audio {
 }
 
 body{
-background-image:url(/public/images/concert1.jpg);
-background-repeat:repeat-y;
-background-attachment:fixed;
-background-position: top center;
-background-size: 100%;
+	background-image:url(/public/images/concert1.jpg);
+	background-repeat:repeat-y;
+	background-attachment:fixed;
+	background-position: top center;
+	background-size: 100%;
 }

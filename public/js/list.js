@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 			for (var k = 0; k < data.playlist.length; k++) {
 				s = s + "<li onclick=words(" + k + "); id='w"+k+"' class='list-group-item list-group-item-success'>" + data.playlist[k].songname + "</li>"
-				d = d + "<li id='d"+k+"' onclick=del(" + k + "); class='list-group-item list-group-item-danger'>Удалить</li>"
+				d = d + "<li id='d"+k+"' onclick=del(" + k + "); class='list-group-item list-group-item-danger'>&times;</li>"
 			}
 			
 			$("#songlist").html(s);
@@ -32,6 +32,7 @@ function words(k){
 	$("#player").attr("src","public/audio/"+varforsong+".mp3");
 
 	$("#player").hide();
+	$("#player").css("width","0");
 	$("#aud").show();
 	$("#myModal").modal();
 }
@@ -50,8 +51,8 @@ function del(k){
 
 	var id = g.playlist[k].song_id;
 
-	$("#"+w).fadeOut();
-	$("#"+d).fadeOut();
+	$("#"+w).hide();
+	$("#"+d).hide();
 
 	$.ajax({url: "/deletesong/"+id})
 }

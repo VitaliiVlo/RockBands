@@ -76,9 +76,33 @@
 }
 
 body{
-background-image:url(/public/images/concert1.jpg);
-background-repeat:repeat-y;
-background-attachment:fixed;
-background-position: top center;
-background-size: 100%;
+	background-image:url(/public/images/concert1.jpg);
+	background-repeat:repeat-y;
+	background-attachment:fixed;
+	background-position: top center;
+	background-size: 100%;
+}
+
+@media screen and (min-width: 950px) and (max-width: 1200px) {
+	#wrapper {
+		font-size: 10px;
+	}
+}
+
+@media screen and (min-width: 700px) and (max-width: 949px) {
+	#wrapper {
+		font-size: 8px;
+	}
+}
+
+@media screen and (min-width: 600px) and (max-width: 699px) {
+	#wrapper {
+		font-size: 6px;
+	}
+}
+
+@media screen and (min-width: 0px) and (max-width: 599px) {
+	#wrapper {
+		font-size: 4px;
+	}
 }

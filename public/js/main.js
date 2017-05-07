@@ -1,7 +1,7 @@
 var g;
 var fav;
-var notadded = "Добавить";
-var added = "Добавлено";
+var notadded = "&#9734;";
+var added = "&#9733;";
 
 function doajax (band) {
 	$.ajax({
@@ -34,6 +34,7 @@ function words(k){
 	fav = g.res[k].song_id;
 
 	$("#player").hide();
+	$("#player").css("width","0");
 	$("#aud").show();
 
 	$.ajax({
