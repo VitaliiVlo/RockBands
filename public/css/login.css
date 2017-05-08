@@ -1,0 +1,19 @@
+.error-msg {
+	color: red;
+	font-weight: bold;
+}
+#reg-ok {
+	color: green;
+	font-weight: bold;
+}
+#log-window{
+	background-color:white;
+	border-radius:10px;
+}
+body{
+	background-image:url(/public/images/concert1.jpg);
+	background-repeat:repeat-y;
+	background-attachment:fixed;
+	background-position: top center;
+	background-size: 100%;
+}
