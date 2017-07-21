@@ -1,30 +1,30 @@
 var express = require('express'),
 	bodyParser = require('body-parser'),
 	app = express(),
-	db = require("./modules/db.js"),
-	python = require("./modules/python.js"),
+	db = require("./modules/db"),
+	python = require("./modules/python"),
 	ejs = require('ejs-locals'),
 	path = require('path'),
 	favicon = require('serve-favicon'),
-	session = require('express-session');
-
+	session = require('express-session'),
+	config = require('./modules/config');
 
 app.engine('html', ejs);
 app.engine('ejs', ejs);
-app.set('views', path.join(__dirname, './views'));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use("/public", express.static(path.join(__dirname, './public')));
+app.use("/public", express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
 app.use(bodyParser.json());
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 app.use(session({
-	key: 'RockBands',
-	secret: 'some_secret_key',
-	saveUninitialized: false,
-	resave: false,
+	key: config.get('session:key'),
+	secret: config.get('session:secret'),
+	saveUninitialized: config.get('session:saveun'),
+	resave: config.get('session:resave'),
 	store: db.sessionStore
 }))
 
@@ -419,6 +419,6 @@ app.post("/admin/addband", isAdmin, function(req, res) {
 
 
 
-app.listen(3000, function() {
+app.listen(config.get('port'), function() {
 	console.log("app started");
 })

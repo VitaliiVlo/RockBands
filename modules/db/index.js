@@ -1,13 +1,14 @@
 var mysql = require('mysql');
 var MySQLStore = require('express-mysql-session');
+var config = require('../config');
 
 var options = {
-  host: 'localhost',
-  port: 3306,
-  user: 'root',
-  password: 'root',
-  connectionLimit: 20,
-  database: 'rockdb'
+  host: config.get('db:host'),
+  port: config.get('db:port'),
+  user: config.get('db:user'),
+  password: config.get('db:password'),
+  connectionLimit: config.get('db:connectionlimit'),
+  database: config.get('db:database')
 }
 
 var session_options = {
