@@ -2,59 +2,12 @@
 	cursor: default;
 }
 
-#wrapper {
-	width: 94%;
-	margin-left: 3%;
-	float: left;
-}
-
-#wrapper input{
-	width: 20%;
-	margin-left: 40%;
-	float: left;
-	padding: 5px;
-	color: #799bd2;
-	margin-bottom: 10px;
-	font-size: 1.2em;
-	font-family: Times New Roman, sans-serif;
-}
-
-
-#wrapper textarea{
-	width: 30%;
-	height: 80px;
-	margin-left: 35%;
-	float: left;
-	padding: 5px;
-	color: #799bd2;
-	margin-bottom: 10px;
-	font-size: 1.2em;
+textarea {
 	resize: none;
-	font-family: Times New Roman, sans-serif;
 }
 
-#wrapper button{
-	float: left;
-	width: 10%;
-	margin-left: 45%;
-	padding: 5px;
-	background-color: white;
-	color: black;
-	cursor: pointer;
-	font-family: Times New Roman, sans-serif;
-	word-wrap:break-word;
-}
-
-#wrapper button:hover{
-	background-color: black;
-	color: #799bd2;
-}
-
-#wrapper #show{
-	float: left;
-	text-align: center;
-	width: 100%;
-	font-size: 1.2em;
+.error-msg {
+	font-weight: bold;
 }
 
 body{

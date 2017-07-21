@@ -6,6 +6,7 @@ $(document).ready(function () {
 		var subject = $("#subject").val();
 		var message = $("#message").val();
 		var fail="";
+
 		if (name.length<3) fail= "Имя не меньше 3 символов";
 		else if(email.split("@").length - 1 == 0 || email.split(".").length - 1 == 0)
 			fail="Некорректный Email";
@@ -14,13 +15,13 @@ $(document).ready(function () {
 		else if(message.length<20)
 			fail = "Сообщение не меньше 20 символов";
 		if(fail != "") {
-			$("#show").html(fail+"<div><br></div>");
+			$("#show").html(fail);
 			$("#show").css("color","red");
 			$("#show").show();
 			return false;
 		}
 		else{
-			$("#show").html("Сообщение отправлено"+"<div><br></div>");
+			$("#show").html("Сообщение отправлено");
 			$("#show").css("color","green");
 			
 			$("#name").val("");
