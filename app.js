@@ -428,6 +428,6 @@ app.post("/admin/addband", isAdmin, function(req, res) {
 
 
 
-app.listen(config.get('port'), function() {
+app.listen(process.env.PORT, function() {
 	console.log("app started");
 })
