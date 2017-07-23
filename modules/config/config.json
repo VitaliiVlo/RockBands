@@ -1,12 +1,11 @@
 {
 	"port":3000,
 	"db":{
-		"host": "localhost",
-		"port": 3306,
-		"user": "root",
-		"password": "root",
+		"host": "us-cdbr-iron-east-03.cleardb.net",
+		"user": "bcc5758f2f6ec8",
+		"password": "7aa60776",
 		"connectionlimit": 30,
-		"database": "rockdb"
+		"database": "heroku_67dac7f3302550c"
 	},
 	"session":{
 		"key": "RockBands",

@@ -4,7 +4,6 @@ var config = require('../config');
 
 var options = {
   host: config.get('db:host'),
-  port: config.get('db:port'),
   user: config.get('db:user'),
   password: config.get('db:password'),
   connectionLimit: config.get('db:connectionlimit'),
