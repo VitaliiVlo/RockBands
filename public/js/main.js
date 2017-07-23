@@ -14,7 +14,7 @@ function doajax (band) {
 			}
 			$("#songs").html(s);
 
-			$("#description").html("<h1>"+data.res[0].bandname+"</h1> <b> Описание : </b>"+data.res[0].description+"<br><b> Год основания : </b>"+data.res[0].year+"<br><b> Страна : </b>"+data.res[0].country+"<br><b> Жанры : </b>"+data.res[0].genres);
+			$("#description").html("<h1>"+data.res[0].bandname+"</h1> <b> Описание : </b>"+data.res[0].description+"<br>");
 
 			var bn = data.res[0].bandname;
 			bn = bn.toLowerCase();

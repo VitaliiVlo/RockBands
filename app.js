@@ -2,12 +2,13 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	app = express(),
 	db = require("./modules/db"),
-	python = require("./modules/python"),
 	ejs = require('ejs-locals'),
 	path = require('path'),
 	favicon = require('serve-favicon'),
 	session = require('express-session'),
-	config = require('./modules/config');
+	config = require('./modules/config'),
+	parser = require('./modules/parser'),
+	bandparser = require('./modules/bandparser');
 
 app.engine('html', ejs);
 app.engine('ejs', ejs);
@@ -19,7 +20,7 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 app.use(bodyParser.json());
-app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(session({
 	key: config.get('session:key'),
 	secret: config.get('session:secret'),
@@ -373,31 +374,39 @@ app.post("/admin/addsong", isAdmin, function(req, res) {
 
 app.get("/admin/findwords", isAdmin, function(req, res) {
 
-	python.findLyrics(function(err, results) {
-		if (err) {
-			res.status(400);
-			console.log(err);
-			return;
-		} else {
-			res.status(200).send({
-				"python": results
-			});
-		}
-	})
+	parser();
+	res.status(200);
+	
+	// python.findLyrics(function(err, results) {
+	// 	if (err) {
+	// 		res.status(400);
+	// 		console.log(err);
+	// 		return;
+	// 	} else {
+	// 		res.status(200).send({
+	// 			"python": results
+	// 		});
+	// 	}
+	// })
+
 })
 
 app.get("/admin/findbands", isAdmin, function(req, res) {
-	python.findBands(function(err, results) {
-		if (err) {
-			res.status(400);
-			console.log(err);
-			return;
-		} else {
-			res.status(200).send({
-				"python": results
-			});
-		}
-	})
+
+	bandparser();
+	res.status(200);
+
+	// python.findBands(function(err, results) {
+	// 	if (err) {
+	// 		res.status(400);
+	// 		console.log(err);
+	// 		return;
+	// 	} else {
+	// 		res.status(200).send({
+	// 			"python": results
+	// 		});
+	// 	}
+	// })
 })
 
 // ajax route to add new band into database

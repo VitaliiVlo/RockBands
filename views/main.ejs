@@ -40,7 +40,7 @@
 	<div class="container">
 		<div class="row">
 
-			<div class="col-md-3 col-lg-3">
+			<div class="col-md-3 col-lg-3 transp">
 				<ul class="list-group">
 					<% for(var k = 0; k<bands.length ; k++){ %>
 					<li onclick="doajax(<%=bands[k].band_id%>);"  class="list-group-item list-group-item-success"><%=bands[k].bandname %></li>
@@ -51,7 +51,7 @@
 
 			<!-- Content (description and list of songs) -->
 
-			<div class="col-md-9 col-lg-9">
+			<div class="col-md-9 col-lg-9 transp">
 				<div class="jumbotron" id="description">
 					<h1>Группа не выбрана</h1> 
 				</div>

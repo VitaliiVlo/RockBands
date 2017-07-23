@@ -26,6 +26,10 @@ audio {
 	background-color: #dff0d8;
 }
 
+.transp {
+	opacity: 0.95;
+}
+
 body{
 	background-image:url(/public/images/concert1.jpg);
 	background-repeat:repeat-y;

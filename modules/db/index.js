@@ -118,3 +118,39 @@ exports.addBand = function(name, cb) {
     cb(err, result);
   });
 }
+
+exports.findForLyrics = function(cb) {
+  q = "SELECT song.songname,band.bandname FROM song NATURAL JOIN band WHERE song.words=?";
+  connection.query(q, ["default"], function(err, result) {
+    cb(err, result);
+  });
+}
+
+exports.addLyrics = function(song, text) {
+  q = "UPDATE song SET words=? WHERE songname=?";
+  connection.query(q, [text, song], function(err, result) {
+
+    if (err) {
+      console.log(err);
+    }
+
+  });
+}
+
+exports.findBandParse = function(cb) {
+  q = "SELECT bandname FROM band WHERE description=?";
+  connection.query(q, ["default"], function(err, result) {
+    cb(err, result);
+  });
+}
+
+exports.addBandDescr = function(band,descr) {
+  q = "UPDATE band SET description=? WHERE bandname=?";
+  connection.query(q, [descr, band], function(err, result) {
+
+    if (err) {
+      console.log(err);
+    }
+
+  });
+}
