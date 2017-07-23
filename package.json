@@ -4,7 +4,7 @@
   "description": "This site about famous rock bands and you can find here them songs",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "author": "Vitaliy Vloshchynskyi",
   "license": "ISC",
@@ -17,7 +17,6 @@
     "express-session": "^1.15.2",
     "mysql": "^2.13.0",
     "nconf": "^0.8.4",
-    "python-shell": "^0.4.0",
     "request": "^2.81.0",
     "serve-favicon": "^2.4.2"
   }
