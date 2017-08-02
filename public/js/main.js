@@ -37,23 +37,10 @@ function words(k){
 	$("#player").css("width","0");
 	$("#aud").show();
 
-	$.ajax({
-		url: "/checkadd/"+fav,
-		success: function(data){
-			if(data.flag=="true"){
-				$("#addbtn").removeClass('btn-info');
-				$("#addbtn").addClass('btn-success');
-				$("#addbtn").addClass('disabled');
-				$("#addbtn").html(added);
-			}
-			else{
-				$("#addbtn").removeClass('disabled');
-				$("#addbtn").removeClass('btn-success');
-				$("#addbtn").addClass('btn-info');
-				$("#addbtn").html(notadded);
-			}
-		}
-	})
+	$("#addbtn").removeClass('disabled');
+	$("#addbtn").removeClass('btn-success');
+	$("#addbtn").addClass('btn-info');
+	$("#addbtn").html(notadded);
 
 	$("#myModal").modal();
 }
