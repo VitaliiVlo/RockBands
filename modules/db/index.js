@@ -2,13 +2,13 @@ var mysql = require('mysql');
 var MySQLStore = require('express-mysql-session');
 var config = require('../config');
 
-var options = {
-  host: config.get('db:host'),
-  user: config.get('db:user'),
-  password: config.get('db:password'),
-  connectionLimit: config.get('db:connectionlimit'),
-  database: config.get('db:database')
-}
+// var options = {
+//   host: config.get('db:host'),
+//   user: config.get('db:user'),
+//   password: config.get('db:password'),
+//   connectionLimit: config.get('db:connectionlimit'),
+//   database: config.get('db:database')
+// }
 
 var session_options = {
   checkExpirationInterval: 7200000, // How frequently expired sessions will be cleared; milliseconds. 
@@ -16,8 +16,10 @@ var session_options = {
   createDatabaseTable: true, // Whether or not to create the sessions database table, if one does not already exist. 
 };
 
-var connection = mysql.createPool(options);
+var connection = mysql.createPool(process.env.CLEARDB_DATABASE_URL);
+
 // connection.connect(function(err) {})
+
 var sessionStore = new MySQLStore(session_options, connection, function(err) {
   if (err) {
     console.log(err);
