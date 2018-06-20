@@ -1,95 +1,60 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>RockBands</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="public/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="public/css/main.css">
-	<script type="text/javascript" src="public/js/jquery-3.2.0.min.js"></script>
-	<script type="text/javascript" src="public/js/bootstrap.js"></script>
-	<script type="text/javascript" src="public/js/main.js"></script>
-</head>
-<body>
-
-	<!-- Navigation bar -->
-
-	<div class="navbar navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/main">RockBands</a>
-			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li> <a href="/feedback">Обратная связь</a> </li>
-					<li> <a href="/playlist">Любимые</a> </li>
-					<li><a href="/logout">Выход</a> </li>
-				</ul>
-			</div>
-		</div>
-	</div>
+<% layout('base') -%>
+<% block('title', 'RockBands') %>
+<% stylesheet('public/css/main.css') -%>
 
 
-	<!-- Bands list -->
+<!-- Bands list -->
 
-	<div class="container">
-		<div class="row">
+<div class="container">
+	<div class="row">
 
-			<div class="col-md-3 col-lg-3 transp">
-				<ul class="list-group">
-					<% for(var k = 0; k<bands.length ; k++){ %>
-					<li onclick="doajax(<%=bands[k].band_id%>);"  class="list-group-item list-group-item-success"><%=bands[k].bandname %></li>
+		<div class="col-md-3 col-lg-3 transp">
+			<ul class="list-group">
+				<% for(var k = 0; k<bands.length ; k++){ %>
+					<li onclick="doajax(<%=bands[k].band_id%>);" class="list-group-item list-group-item-success">
+						<%=bands[k].bandname %>
+					</li>
 					<% } %>
-				</ul>
-			</div>
-
-
-			<!-- Content (description and list of songs) -->
-
-			<div class="col-md-9 col-lg-9 transp">
-				<div class="jumbotron" id="description">
-					<h1>Группа не выбрана</h1> 
-				</div>
-				<ul class="list-group" id="songs">
-
-				</ul>
-			</div>
-
+			</ul>
 		</div>
-	</div>
 
+		<!-- Content (description and list of songs) -->
 
-
-	<!-- Modal window -->
-
-	<div id="myModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<button id="addbtn" type="button" class="btn btn-info btn-sm" onclick="favor()">&#9734;</button>
-					<button type="button" class="btn btn-info btn-sm" onclick="play()" id="aud">Прослушать</button>
-					<audio controls id="player" hidden>Аудио не поддерживается вашим браузером</audio>
-				</div>
-				<div class="modal-body">
-					<pre id="words">words</pre>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-info" data-dismiss="modal">Закрыть</button>
-				</div>
+		<div class="col-md-9 col-lg-9 transp">
+			<div class="jumbotron" id="description">
+				<h1>Группа не выбрана</h1>
 			</div>
+			<ul class="list-group" id="songs">
 
+			</ul>
 		</div>
+
 	</div>
+</div>
 
 
+<!-- Modal window -->
 
-</body>
-</html>
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<button id="addbtn" type="button" class="btn btn-info btn-sm" onclick="favor()">&#9734;</button>
+				<button type="button" class="btn btn-info btn-sm" onclick="play()" id="aud">Прослушать</button>
+				<audio controls id="player" hidden>Аудио не поддерживается вашим браузером</audio>
+			</div>
+			<div class="modal-body">
+				<pre id="words">words</pre>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-info" data-dismiss="modal">Закрыть</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<% script('/public/js/main.js') -%>

@@ -1,106 +1,73 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Login</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="public/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="public/css/login.css">
-</head>
-<body>
+<% layout('base') -%>
+<% block('title', 'Login') %>
+<% stylesheet('public/css/login.css') -%>
 
 
-	<div class="navbar navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/main">RockBands</a>
-			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="disabled"> <a href="#" id="menuloved">Обратная связь</a> </li>
-					<li class="disabled"> <a href="#">Любимые</a> </li>
-					<li class="disabled"><a href="#">Выход</a> </li>
-				</ul>
-			</div>
-		</div>
-	</div>
+<div class="container">
+	<div class="row">
+		<div id="log-window" class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
 
+			<ul class="nav nav-tabs nav-justified">
+				<li class="active"><a data-toggle="tab" href="#menu1">Вход</a></li>
+				<li><a data-toggle="tab" href="#menu2">Регистрация</a></li>
+			</ul>
 
+			<div class="tab-content">
 
-	<div class="container">
-		<div class="row">
-			<div id="log-window" class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+				<div id="menu1" class="tab-pane fade in active">
+					<form>
+						<div class="form-group">
+							<label for="inputName" class="control-label">Логин</label>
+							<input type="text" class="form-control" id="inputName">
+						</div>
 
-				<ul class="nav nav-tabs nav-justified">
-					<li class="active"><a data-toggle="tab" href="#menu1">Вход</a></li>
-					<li><a data-toggle="tab" href="#menu2">Регистрация</a></li>
-				</ul>
+						<div class="form-group">
+							<label for="inputPassword" class="control-label">Пароль</label>
+							<input type="password" class="form-control" id="inputPassword">
+						</div>
 
-				<div class="tab-content">
+						<div class="form-group">
+							<p class="error-msg" id="auth-error" hidden>Неправильный логин или пароль</p>
+							<button type="button" onclick="auth()" class="btn btn-primary btn-block">Войти</button>
+						</div>
+					</form>
+				</div>
 
-					<div id="menu1" class="tab-pane fade in active">
-						<form>
-							<div class="form-group">
-								<label for="inputName" class="control-label">Логин</label>
-								<input type="text" class="form-control" id="inputName">
-							</div>
+				<div id="menu2" class="tab-pane fade">
+					<form>
+						<div class="form-group">
+							<label for="RegInputName" class="control-label">Логин</label>
+							<input type="text" class="form-control" id="RegInputName">
+							<small class="form-text text-muted">Минимальная длина - 3 символа</small>
+							<p class="error-msg" id="reg-login-length-error" hidden>Минимум - 3 символа</p>
+							<p class="error-msg" id="reg-login-error" hidden>Этот логин уже используется. Выберите другое имя</p>
+						</div>
 
-							<div class="form-group">
-								<label for="inputPassword" class="control-label">Пароль</label>
-								<input type="password" class="form-control" id="inputPassword">
-							</div>
-
-							<div class="form-group">
-								<p class="error-msg" id="auth-error" hidden>Неправильный логин или пароль</p>
-								<button type="button" onclick="auth()" class="btn btn-primary btn-block">Войти</button>
-							</div>
-						</form>
-					</div>
-
-					<div id="menu2" class="tab-pane fade">
-						<form>
-							<div class="form-group">
-								<label for="RegInputName" class="control-label">Логин</label>
-								<input type="text" class="form-control" id="RegInputName">
-								<small class="form-text text-muted">Минимальная длина - 3 символа</small>
-								<p class="error-msg" id="reg-login-length-error" hidden>Минимум - 3 символа</p>
-								<p class="error-msg" id="reg-login-error" hidden>Этот логин уже используется. Выберите другое имя</p>
-							</div>
-
-							<div class="form-group">
-								<label for="RegInputPassword" class="control-label">Пароль</label>
-								<input type="password" class="form-control" id="RegInputPassword">
-								<small class="form-text text-muted">Минимальная длина - 5 символов</small>	
-								<p class="error-msg" id="reg-password-length-error" hidden>Минимум - 5 символов</p>
-							</div>
-							
-							<div class="form-group">
-								<label for="RegInputPasswordConfirm" class="control-label">Повторите пароль</label>
-								<input type="password" class="form-control" id="RegInputPasswordConfirm">
-								<p class="error-msg" id="reg-password-error" hidden>Пароли не совпадают</p>
-							</div>
-							
-							<div class="form-group">
-								<p id="reg-ok" hidden>Регистрация прошла успешно </p>
-								<button type="button" onclick="reg()" class="btn btn-primary btn-block">Регистрация</button>
-							</div>
-						</form>
-					</div>
-
+						<div class="form-group">
+							<label for="RegInputPassword" class="control-label">Пароль</label>
+							<input type="password" class="form-control" id="RegInputPassword">
+							<small class="form-text text-muted">Минимальная длина - 5 символов</small>	
+							<p class="error-msg" id="reg-password-length-error" hidden>Минимум - 5 символов</p>
+						</div>
+						
+						<div class="form-group">
+							<label for="RegInputPasswordConfirm" class="control-label">Повторите пароль</label>
+							<input type="password" class="form-control" id="RegInputPasswordConfirm">
+							<p class="error-msg" id="reg-password-error" hidden>Пароли не совпадают</p>
+						</div>
+						
+						<div class="form-group">
+							<p id="reg-ok" hidden>Регистрация прошла успешно </p>
+							<button type="button" onclick="reg()" class="btn btn-primary btn-block">Регистрация</button>
+						</div>
+					</form>
 				</div>
 
 			</div>
+
 		</div>
 	</div>
+</div>
 
-	<script type="text/javascript" src="public/js/jquery-3.2.0.min.js"></script>
-	<script type="text/javascript" src="public/js/bootstrap.js"></script>
-	<script type="text/javascript" src="public/js/login.js"></script>
-	
-</body>
-</html>
+
+<% script('/public/js/login.js') -%>
