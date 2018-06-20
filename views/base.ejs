@@ -21,8 +21,12 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li> <a href="/playlist">Любимые</a> </li>
-					<li><a href="/logout">Выход</a> </li>
+					<% if (loggedIn) { %>
+						<li> <a href="/favourite">Любимые</a></li>
+						<li><a href="/logout">Выход</a></li>
+					<% } else { %>
+						<li><a href="/login">Вход</a></li>
+					<% } %>
 				</ul>
 			</div>
 		</div>

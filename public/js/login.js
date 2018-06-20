@@ -3,7 +3,7 @@ function auth() {
 	var password = $("#inputPassword").val();
 
 	$.ajax({
-		url: "/checkuser",
+		url: "/login/user/check",
 		type: "post",
 		data: {
 			"password": password,
@@ -50,7 +50,7 @@ function reg() {
 	if (fail) {} else {
 
 		$.ajax({
-			url: "/adduser",
+			url: "/login/user/add",
 			type: "post",
 			data: {
 				"login": login,

@@ -3,7 +3,7 @@ var g;
 $(document).ready(function(){
 
 	$.ajax({
-		url: "/findsong",
+		url: "/favourite/list",
 		success: function(data) {
 
 			g = data;
@@ -54,5 +54,5 @@ function del(k){
 	$("#"+w).hide();
 	$("#"+d).hide();
 
-	$.ajax({url: "/deletesong/"+id})
+	$.ajax({url: "/favourite/delete/"+id})
 }

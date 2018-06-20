@@ -5,7 +5,7 @@ var added = "&#9733;";
 
 function doajax (band) {
 	$.ajax({
-		url: '/band/'+band,
+		url: 'main/band/' + band,
 		success: function(data) {
 			g=data;
 			var s = "";
@@ -54,7 +54,7 @@ function play(){
 }
 
 function favor(){
-	$.ajax({url: "/add/"+fav})
+	$.ajax({url: "/favourite/add/"+fav})
 	$("#addbtn").removeClass('btn-info');
 	$("#addbtn").addClass('btn-success');
 	$("#addbtn").addClass('disabled');
