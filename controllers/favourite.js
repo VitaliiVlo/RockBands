@@ -1,6 +1,6 @@
 const express = require('express'),
     router = express.Router(),
-    db = require("../modules/db")
+    db = require("../lib/db")
 
 router.get("/", function (req, res) {
     res.render("favourite");

@@ -1,9 +1,9 @@
 const express = require('express'),
 	app = express(),
-	db = require("./modules/db"),
+	db = require("./lib/db"),
 	path = require('path'),
 	session = require('express-session'),
-	config = require('./modules/config')
+	config = require('./config')
 
 
 app.engine('ejs', require('ejs-locals'));

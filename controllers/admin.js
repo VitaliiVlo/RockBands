@@ -1,8 +1,8 @@
 const express = require('express'),
 	router = express.Router(),
-	db = require("../modules/db"),
-	parser = require('../modules/parser'),
-	bandparser = require('../modules/bandparser');
+	db = require("../lib/db"),
+	parser = require('../lib/parser'),
+	bandparser = require('../lib/bandparser');
 
 
 // admin page
