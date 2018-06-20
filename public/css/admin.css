@@ -1,0 +1,18 @@
+.container .row input{
+    width: 100%;
+    margin-bottom: 3px;
+}
+.container .row button{
+    margin-bottom: 3px;
+}
+textarea {
+    width: 100%;
+    resize: none;
+    height: 400px;
+}
+body {
+    background-color: green;
+}
+.container .row {
+    text-align: center;
+}

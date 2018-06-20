@@ -1,58 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Admin Page</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="public/css/bootstrap.css">
-	<style type="text/css">
-		.container .row input{
-			width: 100%;
-			margin-bottom: 3px;
-		}
-		.container .row button{
-			margin-bottom: 3px;
-		}
-		textarea {
-			width: 100%;
-			resize: none;
-			height: 400px;
-		}
-		body {
-			background-color: green;
-		}
-		.container .row {
-			text-align: center;
-		}
-
-	</style>
-	<script type="text/javascript" src="public/js/jquery-3.2.0.min.js"></script>
-	<script type="text/javascript" src="public/js/bootstrap.js"></script>
-	<script type="text/javascript" src="public/js/admin.js"></script>
-</head>
-<body>
-
-	<!-- Navigation bar -->
-
-	<div class="navbar navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/main">RockBands</a>
-			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li> <a href="/feedback">Обратная связь</a> </li>
-					<li> <a href="/playlist">Любимые</a> </li>
-					<li><a href="/logout">Выход</a> </li>
-				</ul>
-			</div>
-		</div>
-	</div>
+<% layout('base') -%>
+<% block('title', 'AdminPage') %>
+<% stylesheet('public/css/admin.css') -%>
 
 
 <div class="container">
@@ -81,6 +29,4 @@
 </div>
 
 
-
-</body>
-</html>
+<% script('/public/js/admin.js') -%>
