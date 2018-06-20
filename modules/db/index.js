@@ -76,14 +76,6 @@ exports.getBandByName = function(name, cb) {
   });
 }
 
-exports.addFeedback = function(name, subj, mess, cb) {
-  q = "INSERT INTO feedback VALUES (NULL,?,?,?)";
-
-  connection.query(q, [name, subj, mess], function(err, result) {
-    cb(err, result);
-  });
-}
-
 exports.addUser = function(login, pass, cb) {
   q = "INSERT INTO user VALUES (NULL,?,?)";
 

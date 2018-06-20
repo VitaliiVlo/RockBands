@@ -82,13 +82,6 @@ app.get("/main", loggedIn, function(req, res) {
 
 });
 
-// feedback page
-
-app.get("/feedback", loggedIn, function(req, res) {
-
-	res.render("feedback");
-
-});
 
 // user favourite songs page
 
@@ -108,26 +101,6 @@ app.get("/logout", loggedIn, function(req, res) {
 
 // Routes for AJAX
 
-
-
-// add feedback into database
-
-app.post("/send", function(req, res) {
-	name = req.body.name;
-	subj = req.body.subject;
-	mess = req.body.message;
-
-	db.addFeedback(name, subj, mess, function(err, result) {
-		if (err) {
-			res.status(400);
-			console.log(err);
-			return;
-		} else {
-			res.status(200);
-		}
-	})
-
-});
 
 
 // route for login (select from database and creating new session with property USER=USER_ID)
