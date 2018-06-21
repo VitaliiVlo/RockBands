@@ -3,7 +3,8 @@ const express = require('express'),
 	db = require("./lib/db"),
 	path = require('path'),
 	session = require('express-session'),
-	config = require('./config')
+	config = require('./config'),
+	logger = require('./lib/log')(module)
 
 
 app.engine('ejs', require('ejs-locals'));
@@ -35,5 +36,5 @@ app.use(require('./controllers'))
 
 const port = app.get("env") == 'development' ? config.get("port") : process.env.PORT
 app.listen(port, function () {
-	console.log("app started");
+	logger.info("Server listening on the port " + port);
 })
