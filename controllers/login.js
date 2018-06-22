@@ -1,71 +1,48 @@
 const express = require('express'),
     router = express.Router(),
-    db = require("../lib/db")
-    
+    User = require("../models/user").User;
+
 
 // login page
 router.get("/", function (req, res) {
     res.render("login");
-})
+});
 
-// route for login (select from database and creating new session with property USER=USER_ID)
+// route for login (creating new session with property USER=USER_ID)
 router.post("/user/check", function (req, res) {
-    login = req.body.login;
-    pass = req.body.password;
+    var username = req.body.login;
+    var password = req.body.password;
 
-    db.getUserByLogin(login, function (err, result) {
+    User.authorize(username, password, function (err, user) {
         if (err) {
-            res.status(400);
-            console.log(err);
-            return;
+            res.status(200).send({
+                "log": "false"
+            });
         } else {
-            if (result.length == 1 && result[0].password === pass) {
-                req.session.user = result[0].user_id;
-                res.status(200).send({
-                    "log": "true"
-                });
-            } else {
-                res.status(200).send({
-                    "log": "false"
-                });
-            }
+            req.session.user = user._id;
+            res.status(200).send({
+                "log": "true"
+            });
         }
-    })
-})
-
+    });
+});
 
 // route for adding new user into database (registration)
-// todo : password encrypt
 router.post("/user/add", function (req, res) {
-    login = req.body.login;
-    pass = req.body.password;
+    username = req.body.login;
+    password = req.body.password;
 
-    db.getUserByLogin(login, function (err, result) {
+    User.reg(username, password, function (err, user) {
         if (err) {
-            res.status(400);
-            console.log(err);
-            return;
+            res.status(200).send({
+                "reg": "false"
+            });
         } else {
-            if (result.length == 1) {
-                res.status(200).send({
-                    "reg": "false"
-                });
-            } else if (result.length == 0) {
-                db.addUser(login, pass, function (error, result) {
-                    if (error) {
-                        res.status(400);
-                        console.log(err);
-                        return;
-                    } else {
-
-                        res.status(200).send({
-                            "reg": "true"
-                        });
-                    }
-                })
-            }
+            res.status(200).send({
+                "reg": "true"
+            });
         }
-    })
-})
+    });
+});
 
-module.exports = router
+module.exports = router;

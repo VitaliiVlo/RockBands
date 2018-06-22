@@ -1,16 +1,19 @@
 {
-	"port":3000,
-	"db":{
-		"host": "localhost",
-		"user": "root",
-		"password": "root",
-		"connectionlimit": 30,
-		"database": "rockdb"
-	},
-	"session":{
-		"key": "RockBands",
-		"secret": "some_secret_key",
-		"saveun": false,
-		"resave": false
-	}
+  "port": 3000,
+  "db": {
+    "host": "localhost",
+    "user": "root",
+    "password": "root",
+    "connectionlimit": 30,
+    "database": "rockdb"
+  },
+  "mongoose": {
+    "uri": "mongodb://localhost:27017/test"
+  },
+  "session": {
+    "key": "RockBands",
+    "secret": "some_secret_key",
+    "saveun": false,
+    "resave": false
+  }
 }
