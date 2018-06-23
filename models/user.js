@@ -20,7 +20,11 @@ const schema = new Schema({
     created: {
         type: Date,
         default: Date.now
-    }
+    },
+    songs: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Song'
+    }]
 });
 
 schema.methods.encryptPassword = function (password) {
