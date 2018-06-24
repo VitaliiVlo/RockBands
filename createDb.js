@@ -45,9 +45,9 @@ function createInitialObjects(callback) {
     var band = new mongoose.models.Band(bands[0]);
     var user = new mongoose.models.User(users[0]);
     var song = new mongoose.models.Song(songs[0]);
-    song.save(callback);
+    song.save();
     band.songs.push(song);
-    band.save(callback);
+    band.save();
     user.songs.push(song);
     user.save(callback);
 

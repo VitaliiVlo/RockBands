@@ -1,62 +1,67 @@
-var g;
+var songs;
 var fav;
-var notadded = "&#9734;";
+var notAdded = "&#9734;";
 var added = "&#9733;";
 
-function doajax (band) {
-	$.ajax({
-		url: 'main/band/' + band,
-		success: function(data) {
-			g=data;
-			var s = "";
-			for(var k=0;k<data.res.length;k++){
-				s=s+"<li class='list-group-item list-group-item-success' onclick=words('"+k+"');>"+data.res[k].songname+"</li>";
-			}
-			$("#songs").html(s);
+function showBand(band) {
+    $.ajax({
+        url: 'main/band/' + band,
+        success: function (data) {
+            songs = data.songs;
 
-			$("#description").html("<h1>"+data.res[0].bandname+"</h1> <b> Описание : </b>"+data.res[0].description+"<br>");
+            var songList = "";
+            for (var k = 0; k < songs.length; k++) {
+                songList = songList + "<li class='list-group-item list-group-item-success' onclick=lyrics('" + k + "');>" +
+                                          songs[k].name +
+                                      "</li>";
+            }
+            $("#songs").html(songList);
 
-			var bn = data.res[0].bandname;
-			bn = bn.toLowerCase();
-			bn = bn.replace(/\s+/g,"");
-			$("body").css("background-image","url(/public/images/"+bn+".jpg)");
-		}
-	})
+            var descriptionTemplate = "<h1>" + data.band.name + "</h1> <b> Описание : </b>" + data.band.description + "<br>";
+            $("#description").html(descriptionTemplate);
+
+            $("body").css("background-image", "url("+ data.band.image +")");
+        }
+    })
 }
 
-function words(k){
-	$("#words").html(g.res[k].words);
-	var varforsong = g.res[k].songname;
-	varforsong = varforsong.toLowerCase();
-	varforsong = varforsong.replace(/\s+/g,"");
-	$("#player").attr("src","public/audio/"+varforsong+".mp3");
-	
-	fav = g.res[k].song_id;
+function lyrics(k) {
+    $("#words").html(songs[k].lyrics);
 
-	$("#player").hide();
-	$("#player").css("width","0");
-	$("#aud").show();
+    var player = $("#player");
+    player.attr("src", songs[k].audio);
 
-	$("#addbtn").removeClass('disabled');
-	$("#addbtn").removeClass('btn-success');
-	$("#addbtn").addClass('btn-info');
-	$("#addbtn").html(notadded);
+    fav = songs[k]._id;
 
-	$("#myModal").modal();
+    player.hide();
+    player.css("width", "0");
+    $("#aud").show();
+
+    var addBtn = $("#addbtn");
+    addBtn.removeClass('disabled');
+    addBtn.removeClass('btn-success');
+    addBtn.addClass('btn-info');
+    addBtn.html(notAdded);
+
+    $("#myModal").modal();
 }
 
-function play(){
-	$("#aud").fadeOut();
-	$("#player").show();
-	$('#player').animate({
-		width : "100%"
-	});
+function play() {
+    $("#aud").fadeOut();
+
+    var player = $("#player");
+    player.show();
+    player.animate({
+        width: "100%"
+    });
 }
 
-function favor(){
-	$.ajax({url: "/favourite/add/"+fav})
-	$("#addbtn").removeClass('btn-info');
-	$("#addbtn").addClass('btn-success');
-	$("#addbtn").addClass('disabled');
-	$("#addbtn").html(added);
+function favor() {
+    $.ajax({url: "/favourite/add/" + fav});
+
+    var addBtn = $("#addbtn");
+    addBtn.removeClass('btn-info');
+    addBtn.addClass('btn-success');
+    addBtn.addClass('disabled');
+    addBtn.html(added);
 }
