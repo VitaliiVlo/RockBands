@@ -1,6 +1,5 @@
 const express = require('express'),
 	app = express(),
-	db = require("./lib/db"),
 	path = require('path'),
 	session = require('express-session'),
 	config = require('./config'),

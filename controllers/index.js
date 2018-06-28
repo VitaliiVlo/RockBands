@@ -10,7 +10,7 @@ router.use(function (req, res, next) {
 });
 
 // includes of other routes
-router.use('/admin', isAdmin, require('./admin'));
+//router.use('/admin', isAdmin, require('./admin'));
 router.use('/favourite', loggedIn, require('./favourite'));
 router.use('/main', require('./main'));
 router.use('/login', require('./login'));
